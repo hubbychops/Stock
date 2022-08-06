@@ -28,7 +28,7 @@ namespace Stock
         private void btnLogin_Click(object sender, EventArgs e)
         {
             //TO-DO: check login user name and password
-            SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=Stock;Integrated Security=True");
+            SqlConnection con = Connection.GetConnection();
             SqlDataAdapter sda = new SqlDataAdapter(@"SELECT *
                 FROM[Stock].[dbo].[Login] Where UserName='"+ txtName.Text +"' and Password = '"+ txtPassword.Text +"' ", con);
             DataTable dt = new DataTable();

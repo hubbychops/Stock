@@ -41,6 +41,7 @@ namespace Stock
             this.lblProductCode = new System.Windows.Forms.Label();
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +72,7 @@ namespace Stock
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(714, 119);
+            this.btnDelete.Location = new System.Drawing.Point(699, 119);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(117, 45);
             this.btnDelete.TabIndex = 3;
@@ -81,7 +82,7 @@ namespace Stock
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(847, 121);
+            this.btnAdd.Location = new System.Drawing.Point(822, 121);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(106, 41);
             this.btnAdd.TabIndex = 4;
@@ -102,7 +103,7 @@ namespace Stock
             this.dgvProducts.RowHeadersWidth = 62;
             this.dgvProducts.RowTemplate.Height = 28;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(941, 302);
+            this.dgvProducts.Size = new System.Drawing.Size(1030, 302);
             this.dgvProducts.TabIndex = 5;
             this.dgvProducts.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProducts_CellMouseDoubleClick);
             // 
@@ -154,12 +155,23 @@ namespace Stock
             this.lblStatus.TabIndex = 8;
             this.lblStatus.Text = "Status";
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(934, 123);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(106, 41);
+            this.btnReset.TabIndex = 9;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // Products
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 585);
+            this.ClientSize = new System.Drawing.Size(1054, 585);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblProductName);
             this.Controls.Add(this.lblProductCode);
@@ -192,5 +204,6 @@ namespace Stock
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Button btnReset;
     }
 }
