@@ -117,25 +117,29 @@ namespace Stock
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (Validation())
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this record?", "Message", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                SqlConnection con = Connection.GetConnection(); ;
-                var sqlQuery = "";
+                if (Validation())
+                {
+                    SqlConnection con = Connection.GetConnection(); ;
+                    var sqlQuery = "";
 
-                if (IfProductsExists(con, txtProductCode.Text))
-                {
-                    con.Open();
-                    sqlQuery = @"DELETE FROM [Products] WHERE [ProductCode] = '" + txtProductCode.Text + "'";
-                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                    if (IfProductsExists(con, txtProductCode.Text))
+                    {
+                        con.Open();
+                        sqlQuery = @"DELETE FROM [Products] WHERE [ProductCode] = '" + txtProductCode.Text + "'";
+                        SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No record found with that product code");
+                    }
+                    LoadData();
+                    ResetRecords();
                 }
-                else
-                {
-                    MessageBox.Show("No record found with that product code");
-                }
-                LoadData();
-                ResetRecords();
             }
         }
 
@@ -156,10 +160,33 @@ namespace Stock
         private bool Validation()
         {
             bool result = false;
-            if(!string.IsNullOrEmpty(txtProductCode.Text) && !string.IsNullOrEmpty(txtProductName.Text) && cmbStatus.SelectedIndex > -1)
+            if (string.IsNullOrEmpty(txtProductCode.Text))
+            {
+                //in design added errorProvider1
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtProductCode, "Product Code Required");
+            }
+            else if (string.IsNullOrEmpty(txtProductName.Text))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtProductName, "Product Name Required");
+            }
+            else if (cmbStatus.SelectedIndex == -1)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(cmbStatus, "Select Status");
+            }
+            else
             {
                 result = true;
+            }           
+            /*if elseif elseif else replaced
+             if(!string.IsNullOrEmpty(txtProductCode.Text) && !string.IsNullOrEmpty(txtProductName.Text) && cmbStatus.Selectedindex > -1)
+            {
+                result = true
             }
+                return result;
+             */
             return result;
         }
     }

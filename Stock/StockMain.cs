@@ -21,12 +21,34 @@ namespace Stock
         {
             Products pro = new Products();
             pro.MdiParent = this;
+            pro.StartPosition = FormStartPosition.CenterScreen;
             pro.Show();
         }
-
+        bool close = true;
         private void StockMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (close)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to exit?n", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    close = false;
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            
+        }
+
+        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stock stk = new Stock();
+            stk.MdiParent = this;
+            stk.StartPosition = FormStartPosition.CenterScreen;
+            stk.Show();
         }
     }
 }
