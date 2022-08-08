@@ -29,7 +29,7 @@ namespace Stock
         {
             if (close)
             {
-                DialogResult result = MessageBox.Show("Are you sure you want to exit?n", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     close = false;
