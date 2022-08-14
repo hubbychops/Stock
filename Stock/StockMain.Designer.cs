@@ -83,13 +83,14 @@ namespace Stock
             // productListToolStripMenuItem
             // 
             this.productListToolStripMenuItem.Name = "productListToolStripMenuItem";
-            this.productListToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
+            this.productListToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.productListToolStripMenuItem.Text = "Product List";
+            this.productListToolStripMenuItem.Click += new System.EventHandler(this.productListToolStripMenuItem_Click);
             // 
             // stockListToolStripMenuItem
             // 
             this.stockListToolStripMenuItem.Name = "stockListToolStripMenuItem";
-            this.stockListToolStripMenuItem.Size = new System.Drawing.Size(207, 34);
+            this.stockListToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.stockListToolStripMenuItem.Text = "Stock List";
             // 
             // statusStrip
