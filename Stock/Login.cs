@@ -17,7 +17,7 @@ namespace Stock
         {
             /*Before going any further must make sure that not only
              is windows forms app chosen but 
-            Windows Forms App (.net Framework*
+            Windows Forms App (.net Framework)
             Also need to ask IT to download and install
             CrystalreportViewer from: https://www.tektutorialshub.com/crystal-reports/download-crystal-reports-for-visual-studio-2019/
            */

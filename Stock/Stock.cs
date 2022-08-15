@@ -223,16 +223,15 @@ namespace Stock
                 {
                     //updated here from Product.cs to use the Stock Table and not Products
                     //but because I did not originally did this in "IfProductsExists" did never do an update
-                    sqlQuery = @"UPDATE [Stock] SET [ProductName] = '" + txtProductName.Text + "',[Quantity] = '" + txtQuantity.Text + "',[ProductStatus] = '" + status + "' " +
-                                "WHERE [ProductCode] = '" + txtProductCode.Text + "'";
+                    sqlQuery = @"UPDATE [Stock] SET [ProductName] = '" + txtProductName.Text + "',[Quantity] = '" + txtQuantity.Text + "',[ProductStatus] = '" + status + "'  WHERE [ProductCode] = '" + txtProductCode.Text + "'";
                     //Above only updating 3 fields
                     //you should never update the productcode and the transaction date
                     //Can do less fields than columns in table but must be in correct order/named and expected valuetype
                 }
                 else
                 {
-                    sqlQuery = @"INSERT INTO Stock ([ProductCode] ,[ProductName],[TransDate] ,[Quantity],[ProductStatus]) VALUES
-                            ('" + txtProductCode.Text + "', '" + txtProductName.Text + "' , '"+ dateTimePicker1.Value.ToString("dd/MM/yyyy hh:mm:ss") +"','" + txtQuantity.Text + "' ,'" + status + "')";
+                    sqlQuery = @"INSERT INTO Stock (ProductCode ,ProductName,TransDate ,Quantity,ProductStatus) VALUES
+                            ('" + txtProductCode.Text + "', '" + txtProductName.Text + "' , '"+ dateTimePicker1.Value.ToString("MM/dd/yyyy") +"','" + txtQuantity.Text + "' ,'" + status + "')";
                 }
                 SqlCommand cmd = new SqlCommand(sqlQuery, con);
                 cmd.ExecuteNonQuery();
